@@ -25,6 +25,19 @@ https://github.com/Jakeschincariol/linkedin-agent-skill
 Install this skill, then confirm /li-post works.
 ```
 
+Or run the installer (no git needed; keeps your `voice.md` if you have one).
+Windows PowerShell:
+
+```powershell
+irm https://raw.githubusercontent.com/dillonyjames-cpu/linkedin-agent-skill/main/install.ps1 | iex
+```
+
+macOS / Linux:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/dillonyjames-cpu/linkedin-agent-skill/main/install.sh | bash
+```
+
 Or do it yourself, in Claude Code:
 
 ```bash
