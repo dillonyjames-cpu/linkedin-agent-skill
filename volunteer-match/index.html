@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kiwanis Volunteer Match</title>
+  <meta name="description" content="Match volunteers to service shifts by skills, interests and availability. Demo built for the Kiwanis Club of Campbell volunteer coordination challenge.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-inner">
+      <div>
+        <h1>Kiwanis Volunteer Match</h1>
+        <p class="tag">Find the right shift in under a minute. Demo for the Kiwanis Club of Campbell challenge.</p>
+      </div>
+      <nav class="tabs" role="tablist">
+        <button role="tab" id="tab-volunteer" aria-selected="true" data-view="volunteer">I want to volunteer</button>
+        <button role="tab" id="tab-coordinator" aria-selected="false" data-view="coordinator">Coordinator</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p class="notice">Demo data: the shifts and sample volunteers are made up. Everything you enter stays in this browser.</p>
+
+    <!-- Volunteer view -->
+    <section id="view-volunteer" class="view">
+      <div class="who">
+        <label for="who-select">Signed in as</label>
+        <select id="who-select"></select>
+      </div>
+
+      <form id="profile-form" class="card" hidden>
+        <h2>Tell us about you</h2>
+        <div class="grid2">
+          <label>Name <input name="name" required autocomplete="name"></label>
+          <label>Email <input name="email" type="email" required autocomplete="email"></label>
+        </div>
+        <fieldset><legend>Skills you can bring</legend><div id="skill-boxes" class="chips"></div></fieldset>
+        <fieldset><legend>Causes you care about</legend><div id="cause-boxes" class="chips"></div></fieldset>
+        <fieldset>
+          <legend>When are you free?</legend>
+          <div class="avail-scroll"><table class="avail" id="avail-grid"></table></div>
+        </fieldset>
+        <p class="form-error" id="profile-error" role="alert"></p>
+        <button type="submit" class="primary">Show my matches</button>
+      </form>
+
+      <div id="volunteer-dash" hidden>
+        <div class="dash">
+          <section class="card">
+            <div class="row-between">
+              <h2>Best matches for you</h2>
+              <button type="button" class="link" id="edit-profile">Edit profile</button>
+            </div>
+            <p class="muted" id="match-summary"></p>
+            <div id="match-list" class="list"></div>
+          </section>
+          <aside>
+            <section class="card">
+              <h2>Your impact</h2>
+              <div class="stats" id="reward-stats"></div>
+              <ul class="badges" id="badge-list"></ul>
+            </section>
+            <section class="card">
+              <h2>Your schedule</h2>
+              <div id="my-shifts" class="list"></div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coordinator view -->
+    <section id="view-coordinator" class="view" hidden>
+      <div class="stats big" id="coord-stats"></div>
+      <section class="card">
+        <div class="row-between">
+          <h2>Shifts</h2>
+          <div class="actions">
+            <button type="button" id="export-csv">Export roster (CSV)</button>
+            <button type="button" id="reset-demo" class="ghost">Reset demo data</button>
+          </div>
+        </div>
+        <div id="shift-table" class="list"></div>
+      </section>
+      <form id="shift-form" class="card">
+        <h2>Post a new shift</h2>
+        <div class="grid2">
+          <label>Title <input name="title" required></label>
+          <label>Cause <select name="cause" id="shift-cause"></select></label>
+          <label>Date <input name="date" type="date" required></label>
+          <label>Location <input name="location" required></label>
+          <label>Start <input name="start" type="time" required value="09:00"></label>
+          <label>End <input name="end" type="time" required value="12:00"></label>
+          <label>Volunteers needed <input name="slots" type="number" min="1" max="100" value="4" required></label>
+        </div>
+        <label>Description <input name="description"></label>
+        <fieldset><legend>Skills needed (leave empty if none)</legend><div id="shift-skill-boxes" class="chips"></div></fieldset>
+        <p class="form-error" id="shift-error" role="alert"></p>
+        <button type="submit" class="primary">Post shift</button>
+      </form>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="data.js"></script>
+  <script src="matching.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
