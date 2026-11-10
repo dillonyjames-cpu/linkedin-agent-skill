@@ -1,0 +1,9 @@
+{
+  "webapp_url": "https://script.google.com/macros/s/PASTE_YOUR_DEPLOYMENT_ID/exec",
+  "shared_secret": "PASTE_THE_SAME_VALUE_AS_MAC_SHARED_SECRET",
+  "chats": ["Japan Hackathon"],
+  "contacts": {
+    "+819000000000": "Name to show instead of the phone number"
+  },
+  "backfill_days": 30
+}
